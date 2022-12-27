@@ -1,0 +1,27 @@
+html {
+    height: 100%;
+}
+body {
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background: linear-gradient(192deg, #7916dd, #88d4a7);
+    font-size: 3vw
+}
+
+div {
+    padding: 50px;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #c4b7c3;
+}
+
+p {
+    text-indent: 35px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
