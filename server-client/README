@@ -1,3 +1,7 @@
-Command to start server:
+Commands to start server:
+
+	python3 flask_server.py
+	-----> will run on port 8080 on all available IPv4 adresses. You can try localhost:8080
 
 	flask --app flask_server run
+	-----> will run a development server on http://127.0.0.1:5000

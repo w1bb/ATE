@@ -7,7 +7,7 @@
 
 <section>
 	<div class="text_input_form">
-		<form method= "POST" action = "" enctype="multipart/form-data">
+		<form method= "POST" action = "/" enctype="multipart/form-data">
 			<label for="question">Question:</label>
 			<input type="text" id="question" name="question"><br><br>
 			<input type="submit" value="Submit">
@@ -15,7 +15,7 @@
     </div>
 	{% if submitted %}
 		<h1>Question: {{question}}</h1>
-		<h1>Answer: {{ processed_text }}</h1>
+		<h1>Answer: {{ answer }}</h1>
 	{% endif %}
 </section>
 
