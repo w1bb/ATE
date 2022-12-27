@@ -16,17 +16,18 @@ if __name__ == '__main__':
 #These functions will run when POST method is used.
 @app.route('/', methods = ["POST"] )
 def parse_request():
-    #gathering file from form
+    #getting question from form
     question = request.form.get('question')
     
     
     #making sure its not empty
     if question != '':
-        print(question)
         processed_text = question.upper()
-        return processed_text
+        submitted = True
+        
+        return render_template('index.html', processed_text = processed_text, question = question, submitted = submitted)
         
     
     else:
         return render_template('index.html', PageTitle = "Landing page")
-      #This just reloads the page if no file is selected and the user tries to POST. 
+      #This just reloads the page if question is given and the user tries to POST. 

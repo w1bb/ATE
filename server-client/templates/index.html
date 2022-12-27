@@ -13,6 +13,10 @@
 			<input type="submit" value="Submit">
 		</form>
     </div>
+	{% if submitted %}
+		<h1>Question: {{question}}</h1>
+		<h1>Answer: {{ processed_text }}</h1>
+	{% endif %}
 </section>
 
 </body>
