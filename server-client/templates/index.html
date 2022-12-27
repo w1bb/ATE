@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<section>
+	<div class="text_input_form">
+		<form method= "POST" action = "/" enctype="multipart/form-data">
+			<label for="question">Question:</label>
+			<input type="text" id="question" name="question"><br><br>
+			<input type="submit" value="Submit">
+		</form>
+    </div>
+	{% if submitted %}
+		<h1>Question: {{question}}</h1>
+		<h1>Answer: {{ answer }}</h1>
+	{% endif %}
+</section>
+
+</body>
+</html>
