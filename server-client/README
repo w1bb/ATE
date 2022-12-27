@@ -1,0 +1,3 @@
+Command to start server:
+
+	flask --app flask_server run
