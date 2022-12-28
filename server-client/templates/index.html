@@ -1,23 +1,22 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-
-<section>
-	<div class="text_input_form">
-		<form method= "POST" action = "/" enctype="multipart/form-data">
-			<label for="question">Question:</label>
-			<input type="text" id="question" name="question"><br><br>
-			<input type="submit" value="Submit">
-		</form>
-    </div>
-	{% if submitted %}
-		<h1>Question: {{question}}</h1>
-		<h1>Answer: {{ answer }}</h1>
-	{% endif %}
-</section>
-
-</body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TriviaBot</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styleindex.css') }}">
+  </head>  
+  <body>
+    <div class="login-box">
+        <h2>Question Box</h2>
+        <form method= "POST" action = "" enctype="multipart/form-data">          
+          <input type="text" id="question" name="question" placeholder="Ask anything"><button class="button" role="button">Search</button>         
+        </form>       
+      </div>      
+      </body>                                    
+      </script>
+      
+       
+  </body>
 </html>
+
+
+

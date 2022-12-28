@@ -1,7 +1,8 @@
 #Package import
 from flask import Flask, render_template, request
 from waitress import serve
- 
+import ai
+
 #initialise app
 app = Flask(__name__)
 
@@ -21,10 +22,9 @@ def parse_request():
     #making sure its not empty
     if question != '':
         # TODO: generate answer
-        answer = question.upper()
+        answer = ai.ask_question(question)
         
-        submitted = True
-        return render_template('index.html', answer = answer, question = question, submitted = submitted)
+        return render_template('raspuns.html', answer = answer, question = question)
 
     else:
         return render_template('index.html', PageTitle = "Landing page")
