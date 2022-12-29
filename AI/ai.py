@@ -61,8 +61,12 @@ def get_urls(original_question, stop_no, urls):
     user_agent = get_random_user_agent()
     console.print(f"(i) Searching for answers (user agent {user_agent}, stop at {stop_no} results)", style="info")
     true_question = f"site:en.wikipedia.org {original_question}"
-    for url in search(true_question, stop=3, user_agent=get_random_user_agent()):
-        urls.append(url)
+    try:
+        for url in search(true_question, stop=3, user_agent=get_random_user_agent()):
+            urls.append(url)
+    except:
+        urls.append("BLOCKED")
+        
 
 def ask_question(original_question):
 
@@ -87,11 +91,14 @@ def ask_question(original_question):
 
         if len(urls) != 0:
             break
-
     if len(urls) == 0:
         console.print("(!) Could not find any answer on Wikipedia!", style="danger")
         console.print("- - - - -")
         return "Sorry, could not find any answer on Wikipedia!"
+    elif urls[0] == "BLOCKED":
+        console.print("(!) You made too many requests; Google won't let you search!", style="danger")
+        console.print("- - - - -")
+        return "You made too many requests and Google temporarily blocked you!"
 
     console.print("(i) Found these results: ", urls)
 
