@@ -24,6 +24,21 @@ contributed by:
 * Valentin-Ioan VINTILĂ
 (<a href="https://github.com/w1bb">@w1bb</a>).
 
+## Required packages
+
+In order to function properly, the project requires a number of packages, each
+with its specific functionality:
+
+* `bs4`, required by the AI module - it helps scrape the Wikipedia articles;
+* `flask`, required by the Server module - it provides the functionality to instantiate the actual server;
+* `googlesearch`, required by the AI module - it searches Google for the best Wikipedia articles;
+* `rich` - used throught the project to make text beautiful;
+* `tensorflow`, required by the AI module - it is used by the `transformers` package;
+* `transformers`, required by the AI module - it is the actual brain of the operation;
+* `waitress`, required by the Server module - it provides the functionality to host the server on `localhost:8080`;
+
+Please note that all these packages can be installed via `pip`.
+
 ## AI
 
 The AI folder contains the following files:

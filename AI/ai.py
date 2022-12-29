@@ -37,7 +37,6 @@
 import datasets
 import fileinput
 import io
-from tqdm import tqdm
 from transformers import pipeline
 from transformers.pipelines.base import KeyDataset
 from googlesearch import search
@@ -46,19 +45,30 @@ from bs4 import BeautifulSoup
 import re
 import multiprocessing
 import time
+from rich.console import Console
+from rich.theme import Theme
 
 question_answering = pipeline("question-answering")
-question = "Who wrote the C++ programming language?"
+
+custom_theme = Theme({
+    "info": "dim white",
+    "ok": "bold green",
+    "warning": "yellow",
+    "danger": "bold red"
+})
+console = Console(theme=custom_theme)
 
 def get_urls(original_question, stop_no, urls):
-    print(f"[i] Searching for answers (stop_no={stop_no})")
+    console.print(f"(i) Searching for answers (stop at {stop_no} results)", style="info")
     true_question = f"site:en.wikipedia.org {original_question}"
     for url in search(true_question, stop=3):
         urls.append(url)
 
 def ask_question(original_question):
-    print("- - - - -")
-    print("[i] Received question: ", original_question)
+
+    console.print("- - - - -")
+    console.print("(i) Received question: ", original_question, style="info")
+    
     # Allow the URLs search for at most 10 seconds
     manager = multiprocessing.Manager()
     urls = manager.list()
@@ -70,21 +80,21 @@ def ask_question(original_question):
         p.join(10)
         if p.is_alive() == False:
             break
-        else:
-            p.terminate()
-            p.join()
+        p.terminate()
+        p.join()
+        console.print("(w) Could not find the required number of answers...", style="warning")
 
     if len(urls) == 0:
         return "Sorry, could not find any answer on Wikipedia!"
-    
+    console.print("(i) Found these results: ", urls)
+
     text = ""
-    print("[i] Found these results: ", urls)
     for url in urls:
         try:
             source = urlopen(url)
             soup = BeautifulSoup(source, features="html5lib")
         except Exception:
-            print(f"[w] Could not load the content of '{url}'")
+            console.print(f"(w) Could not load the content of '{url}'", style="warning")
         else:
             for paragraph in soup.find_all('p'):
                 text += paragraph.text
@@ -92,8 +102,8 @@ def ask_question(original_question):
     text = re.sub(r'\[.*?\]+', '', text)
     text = text.replace('\n', ' ')
 
-    print("[i] Coming up with an answer...", urls)
+    console.print("(i) Coming up with an answer - this might take a while...", style="info")
     result = question_answering(context=text, question=question)
-    print("[i] ANSWER: ", result['answer'])
-    print("- - - - -")
+    console.print("(i) ANSWER: ", result['answer'], style="ok")
+    console.print("- - - - -")
     return result['answer']
