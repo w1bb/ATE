@@ -38,7 +38,7 @@ Pick your poison!
 In order to run this project, a few assumptions are made:
 
 * The user is on a Linux OS (preferably Ubuntu or Arch);
-* The user has `make`, `python3` and `pip` installed, alongside a browser to check out the resulting server.
+* The user has `make`, `python3.10` and `pip` installed, alongside a browser to check out the resulting server.
 
 To build and run the project, please follow these steps:
 
@@ -52,7 +52,7 @@ To build and run the project, please follow these steps:
 In order to run this project, a few assumptions are made:
 
 * The user is on a Linux OS (preferably Ubuntu or Arch);
-* The user has `make`, `python3`, `pip` and `venv` installed, alongside a browser to check out the resulting server. Note that `venv` should come with the Python package, but this is not guaranteed (Debian might not ship `python` with `venv`).
+* The user has `make`, `python3.10`, `pip` and `venv` installed, alongside a browser to check out the resulting server. Note that `venv` should come with the Python package, but this is not guaranteed (Debian might not ship `python` with `venv`).
 
 To build and run the project, please follow these steps:
 
