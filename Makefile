@@ -26,13 +26,13 @@ build: clean build-pip
 
 build-pip:
 	@printf "Installing the pip packages (verbosely)...\n"
-	pip install bs4
-	pip install flask
-	pip install google
-	pip install rich
-	pip install tensorflow
-	pip install transformers
-	pip install waitress
+	pip3 install bs4==0.0.1
+	pip3 install flask==2.2.2
+	pip3 install google==3.0.0
+	pip3 install rich==12.6.0
+	pip3 install tensorflow==2.11.0
+	pip3 install transformers==4.25.1
+	pip3 install waitress==2.1.2
 	@printf "\n\nAll the packages have been installed successfully!\n"
 
 run:
@@ -66,13 +66,13 @@ venv-build: venv-clean
 	@printf " OK\n"
 	@printf "Activating venv and installing pip packages (this might take a while)..."
 	@. ./venv-product/bin/activate; \
-		pip install bs4; \
-		pip install flask; \
-		pip install google; \
-		pip install rich; \
-		pip install tensorflow; \
-		pip install transformers; \
-		pip install waitress
+		pip3 install bs4==0.0.1; \
+		pip3 install flask==2.2.2; \
+		pip3 install google==3.0.0; \
+		pip3 install rich==12.6.0; \
+		pip3 install tensorflow==2.11.0; \
+		pip3 install transformers==4.25.1; \
+		pip3 install waitress==2.1.2
 	@printf "\n\nEverything was setup successfully!\n"
 	@printf "You can now start the server by running \`make venv-run\`.\n"
 
