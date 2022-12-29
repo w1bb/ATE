@@ -29,6 +29,7 @@ build-pip:
 	pip3 install bs4==0.0.1
 	pip3 install flask==2.2.2
 	pip3 install google==3.0.0
+	pip3 install lxml==4.9.2
 	pip3 install rich==12.6.0
 	pip3 install tensorflow==2.11.0
 	pip3 install transformers==4.25.1
@@ -37,7 +38,6 @@ build-pip:
 
 run:
 	@printf "Starting the server...\n"
-	@cd product
 	@python3 product/flask_server.py
 
 run-here:
@@ -69,6 +69,7 @@ venv-build: venv-clean
 		pip3 install bs4==0.0.1; \
 		pip3 install flask==2.2.2; \
 		pip3 install google==3.0.0; \
+		pip3 install lxml==4.9.2; \
 		pip3 install rich==12.6.0; \
 		pip3 install tensorflow==2.11.0; \
 		pip3 install transformers==4.25.1; \
@@ -78,7 +79,6 @@ venv-build: venv-clean
 
 venv-run:
 	@printf "Starting the venv server...\n"
-	@cd product
 	@. ./venv-product/bin/activate; python3 ./venv-product/flask_server.py
 
 venv-clean:

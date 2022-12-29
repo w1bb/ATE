@@ -106,7 +106,7 @@ def ask_question(original_question):
     for url in urls:
         try:
             source = urlopen(url)
-            soup = BeautifulSoup(source, features="html5lib")
+            soup = BeautifulSoup(source, "lxml")
         except Exception:
             console.print(f"(w) Could not load the content of '{url}'", style="warning")
         else:
