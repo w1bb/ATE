@@ -105,12 +105,6 @@ docker-build: docker-clean
 	@printf "You can now start the server by running \`make docker-run\`.\n"
 
 docker-clean:
-	@printf "Killing all docker containers..."
-	@containers=$(shell docker ps -q)
-	@if [ "$(shell echo "$(containers)" | wc -w)" -ne "0" ]; then \
-		docker kill $(containers); \
-	fi
-	@printf " OK\n"
 	@printf "Removing the docker-product/ folder content if it exists..."
 	@rm -rf docker-product/static
 	@rm -rf docker-product/templates
