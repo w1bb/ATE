@@ -34,7 +34,7 @@
 #                          ===  The actual program  ===
 #                          ============================
 
-#Package import
+# Package import
 from inspect import getsourcefile
 from os.path import abspath
 this_folder = abspath(getsourcefile(lambda:0))
@@ -44,32 +44,32 @@ from flask import Flask, render_template, request
 from waitress import serve
 exec(open(this_folder + "ai.py").read())
 
-#initialise app
+# initialise app
 app = Flask(__name__)
 
-#decorator for homepage 
+# decorator for homepage 
 @app.route('/')
 def index():
 	return render_template('index.html', PageTitle = "Landing page")
 
 
-#This function will run when POST method is used.
+# This function will run when POST method is used.
 @app.route('/', methods = ['POST'] )
 def parse_request():
-    #getting question from form
+    # getting question from form
     question = request.form.get('question')
 
     
-    #making sure its not empty
+    # making sure its not empty
     if question != '':
-        # TODO: generate answer
+        # generate answer
         answer = ask_question(question)
         
         return render_template('answer.html', answer = answer, question = question)
 
     else:
         return render_template('index.html', PageTitle = "Landing page")
-        #This just reloads the page if question is given and the user tries to POST. 
+        # This just reloads the page if question is given and the user tries to POST. 
 
 
 if __name__ == '__main__':
