@@ -103,7 +103,7 @@ def ask_question(original_question):
     text = text.replace('\n', ' ')
 
     console.print("(i) Coming up with an answer - this might take a while...", style="info")
-    result = question_answering(context=text, question=question)
+    result = question_answering(context=text, question=original_question)
     console.print("(i) ANSWER: ", result['answer'], style="ok")
     console.print("- - - - -")
     return result['answer']

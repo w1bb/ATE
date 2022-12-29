@@ -1,0 +1,5 @@
+# No file from product should be copies on git
+product/
+
+# Other internal documentation
+server/README

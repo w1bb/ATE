@@ -41,11 +41,11 @@ In order to run this project, a few assumptions are made:
 
 To build and run the project, please follow the following steps:
 
-1. From the parent (current) folder, run `make build`. This will create a folder called `product` that will contain all the files required by the server.
+1. From the parent (current) folder, run `make build`. This will create a folder called `product` that will contain all the files required by the server. The command will also check to see if the required packages are installed and, if they are missing, it will install them. If you dislike this behaviour, check out the other way of running the server, using `docker`.
 2. Run `make run` in order to start the server. In a browser (e.g. Firefox), you can now go to `127.0.0.1:8080` and check the functionality of the application. Please note that the terminal in which you typed the command will now act as a logger.
 3. When you are done, you can exit the server by pressing `Ctrl+C`.
-4. (Optional) You can also try `make debug`, which will run a development server instance instead.
-5. (Optional) Once you are done testing the functionality, you can run a cleanup procedure by typing `make clean`. Please make sure the server is not running in the background before running this command.
+4. *(Optional)* You can also try `make debug`, which will run a development server instance instead.
+5. *(Optional)* Once you are done testing the functionality, you can run a cleanup procedure by typing `make clean`. Please make sure the server is not running in the background before running this command.
 
 ## Required packages
 
@@ -54,7 +54,7 @@ with its specific functionality:
 
 * `bs4`, required by the AI module - it helps scrape the Wikipedia articles;
 * `flask`, required by the Server module - it provides the functionality to instantiate the actual server;
-* `googlesearch`, required by the AI module - it searches Google for the best Wikipedia articles;
+* `googlesearch-python`, required by the AI module - it searches Google for the best Wikipedia articles;
 * `rich` - used throught the project to make text beautiful;
 * `tensorflow`, required by the AI module - it is used by the `transformers` package;
 * `transformers`, required by the AI module - it is the actual brain of the operation;

@@ -24,7 +24,7 @@ def parse_request():
         # TODO: generate answer
         answer = ai.ask_question(question)
         
-        return render_template('raspuns.html', answer = answer, question = question)
+        return render_template('answer.html', answer = answer, question = question)
 
     else:
         return render_template('index.html', PageTitle = "Landing page")
