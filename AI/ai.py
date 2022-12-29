@@ -34,12 +34,11 @@
 #                          ===  The actual program  ===
 #                          ============================
 
-import datasets
 import fileinput
 import io
 from transformers import pipeline
-from transformers.pipelines.base import KeyDataset
 from googlesearch import search
+from googlesearch import get_random_user_agent
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
@@ -59,9 +58,10 @@ custom_theme = Theme({
 console = Console(theme=custom_theme)
 
 def get_urls(original_question, stop_no, urls):
-    console.print(f"(i) Searching for answers (stop at {stop_no} results)", style="info")
+    user_agent = get_random_user_agent()
+    console.print(f"(i) Searching for answers (user agent {user_agent}, stop at {stop_no} results)", style="info")
     true_question = f"site:en.wikipedia.org {original_question}"
-    for url in search(true_question, stop=3):
+    for url in search(true_question, stop=3, user_agent=get_random_user_agent()):
         urls.append(url)
 
 def ask_question(original_question):
@@ -72,22 +72,27 @@ def ask_question(original_question):
     # Allow the URLs search for at most 10 seconds
     manager = multiprocessing.Manager()
     urls = manager.list()
-    for k in range(3, 0, -1):
-        p = multiprocessing.Process(target=get_urls,
-                                    name="Get URLs",
-                                    args=(original_question, k, urls))
-        p.start()
-        p.join(10)
-        if p.is_alive() == False:
+    for uagi in range(0, 3):
+        for k in range(3, 0, -1):
+            p = multiprocessing.Process(target=get_urls,
+                                        name="Get URLs",
+                                        args=(original_question, k, urls))
+            p.start()
+            p.join(10)
+            if p.is_alive() == False:
+                break
+            p.terminate()
+            p.join()
+            console.print("(w) Could not find the required number of answers...", style="warning")
+
+        if len(urls) != 0:
             break
-        p.terminate()
-        p.join()
-        console.print("(w) Could not find the required number of answers...", style="warning")
 
     if len(urls) == 0:
         console.print("(!) Could not find any answer on Wikipedia!", style="danger")
         console.print("- - - - -")
         return "Sorry, could not find any answer on Wikipedia!"
+
     console.print("(i) Found these results: ", urls)
 
     text = ""

@@ -66,8 +66,7 @@ venv-build: venv-clean
 		pip install rich; \
 		pip install tensorflow; \
 		pip install transformers; \
-		pip install waitress; \
-		pip install datasets
+		pip install waitress
 	@printf "\n\nEverything was setup successfully!\n"
 	@printf "You can now start the server by running \`make venv-run\`.\n"
 
