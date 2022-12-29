@@ -25,29 +25,43 @@ license**. The code and its documentation were kindly contributed by:
 
 ## Running the project
 
-There are two ways to run this project, and each comes with its advantages and disadvantages:
+There are three ways to run this project, and each comes with its advantages and disadvantages:
 
-* Running the project **locally** - this has the benefit of running out of the box as long as a few requirements are met (please read the dedicated subsection);
-* Running the project using **docker** - this will take longer, but will work on any machine.
+* Running the project **locally without venv** - this has the benefit of running out of the box as long as a few requirements are met (please read the dedicated subsection);
+* Running the project **locally with venv** - this is almost the same as the first option, only it is safer, but it consumes more time;
+* Running the project using **docker** - this will take even longer, but will work on any machine.
 
 Pick your poison!
 
-### Running locally
+### Running locally without venv
 
 In order to run this project, a few assumptions are made:
 
 * The user is on a Linux OS (preferably Ubuntu or Arch);
 * The user has `make`, `python3` and `pip` installed, alongside a browser to check out the resulting server.
 
-To build and run the project, please follow the following steps:
+To build and run the project, please follow these steps:
 
-1. From the parent (current) folder, run `make build`. This will create a folder called `product` that will contain all the files required by the server. The command will also check to see if the required packages are installed and, if they are missing, it will install them. If you dislike this behaviour, check out the other way of running the server, using `docker`.
-2. Run `make run` in order to start the server. In a browser (e.g. Firefox), you can now go to `127.0.0.1:8080` and check the functionality of the application. Please note that the terminal in which you typed the command will now act as a logger.
+1. From the parent (current) folder, run `make build`. This will create a folder called `product` that will contain all the files required by the server. The command will also check to see if the required packages are installed and, if they are missing, it will install them. If you dislike this behaviour, check out the other ways of running the server.
+2. Run `make run` in order to start the server. In a browser (e.g. Firefox), you can now go to `127.0.0.1:8080` and check the functionality of the application. Please note that the terminal in which you typed the command will now act as a logger. You should also make sure the `8080` port is not already in use.
 3. When you are done, you can exit the server by pressing `Ctrl+C`.
-4. *(Optional)* You can also try `make debug`, which will run a development server instance instead.
-5. *(Optional)* Once you are done testing the functionality, you can run a cleanup procedure by typing `make clean`. Please make sure the server is not running in the background before running this command.
+4. *(Optional)* Once you are done testing the functionality, you can run a cleanup procedure by typing `make clean`. Please make sure the server is not running in the background before running this command.
 
-## Required packages
+### Running locally with venv
+
+In order to run this project, a few assumptions are made:
+
+* The user is on a Linux OS (preferably Ubuntu or Arch);
+* The user has `make`, `python3`, `pip` and `venv` installed, alongside a browser to check out the resulting server. Note that `venv` should come with the Python package, but this is not guaranteed (Debian might not ship `python` with `venv`).
+
+To build and run the project, please follow these steps:
+
+
+## Documentation
+
+This section will present the inner-workings of the code.
+
+### Required packages
 
 In order to function properly, the project requires a number of packages, each
 with its specific functionality:
@@ -62,7 +76,7 @@ with its specific functionality:
 
 Please note that all these packages can be installed via `pip`.
 
-## AI
+### The AI module
 
 The AI folder contains the following files:
 
@@ -72,7 +86,7 @@ ai-test.py = An example that tests the AI implementation by allowing an agent to
              ask as many questions as he desires (break with Ctrl+C).
 ```
 
-### ai.py
+#### ai.py
 
 This file contains two important functions:
 
@@ -96,7 +110,7 @@ project.
 
 *Note:* The `ask_question` function is slow at times, please be patient!
 
-### ai-test.py
+#### ai-test.py
 
 Run this script and try questions such as `Who is the current president of the
 United States?` or `When did the roman empire fall?`. Were the results

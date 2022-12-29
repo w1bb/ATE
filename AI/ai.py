@@ -85,6 +85,8 @@ def ask_question(original_question):
         console.print("(w) Could not find the required number of answers...", style="warning")
 
     if len(urls) == 0:
+        console.print("(!) Could not find any answer on Wikipedia!", style="danger")
+        console.print("- - - - -")
         return "Sorry, could not find any answer on Wikipedia!"
     console.print("(i) Found these results: ", urls)
 
