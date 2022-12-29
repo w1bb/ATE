@@ -1,6 +1,10 @@
 # No file from product should be copies on git
 product/
 venv-product/
+docker-product/static/
+docker-product/templates/
+docker-product/*.py
+docker-product/Makefile
 
 # Other internal documentation
 server/README
