@@ -61,6 +61,37 @@ To build and run the project, please follow these steps:
 3. When you are done, you can exit the server by pressing `Ctrl+C`.
 4. *(Optional)* Once you are done testing the functionality, you can run a cleanup procedure by typing `make venv-clean`. Please make sure the server is not running in the background before running this command.
 
+### Running using docker
+
+In order to run this project, a few assumptions are made:
+
+* The user is on a Linux OS (preferably Ubuntu or Arch);
+* The user has `docker` correctly installed and configured on its machine. This might require the user to get added to a [special group](https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socke).
+
+To build and run the project, please follow these steps:
+
+1. From the parent (current) folder, run `make docker-build`. This will create the files inside `docker-product` and then will prompt `docker` to create an image file. This process will take a while.
+2. After the first step is complete, one should get a message similar to this one:
+    ```
+    (...)
+    Step 13/13 : CMD ["make", "run-here"]
+    ---> Running in bcdf1f83fd11
+    Removing intermediate container bcdf1f83fd11
+    ---> ee0ed09054f9
+    Successfully built ee0ed09054f9
+    Successfully tagged w1bb/ia4:1.0
+
+    Everything was setup successfully!
+    ```
+    In this case, the resulting image is called `ee0ed09054f9` (it can be determined as it follows the `Successfully built` message). Use that name to start the actual server - this can be accomplished by running:
+    ```
+    wi@arch:~$ docker run -p 8080:8080 <IMAGE NAME>
+    ```
+    Based on the example above, one should run `docker run -p 8080:8080 ee0ed09054f9`. In a browser (e.g. Firefox), you can now go to `127.0.0.1:8080` and check the functionality of the application. Please note that the terminal in which you typed the command will now act as a logger. You should also make sure the `8080` port is not already in use.
+3. When you are done, you can exit the server by pressing `Ctrl+C`.
+4. *(Optional)* Once you are done testing the functionality, you can run a cleanup procedure by typing `make docker-clean`. Please make sure the server is not running in the background before running this command.
+
+
 
 ## Documentation
 

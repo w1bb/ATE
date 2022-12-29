@@ -9,7 +9,7 @@ default:
 	@printf "\`\n"
 	@printf "For further information, please check out the documentation.\n"
 
-build: clean
+build: clean build-pip
 	@printf "Copying the files to the product/ folder..."
 	@test -d product || mkdir product
 	@test -d product/static || mkdir product/static
@@ -22,6 +22,9 @@ build: clean
 	@cp GUI/static/styles/style-answer.css product/static/styles/style-answer.css
 	@cp server/flask_server.py product/flask_server.py
 	@printf " OK\n"
+	@printf "You can now start the server by running \`make run\`.\n"
+
+build-pip:
 	@printf "Installing the pip packages (verbosely)...\n"
 	pip install bs4
 	pip install flask
@@ -31,12 +34,15 @@ build: clean
 	pip install transformers
 	pip install waitress
 	@printf "\n\nAll the packages have been installed successfully!\n"
-	@printf "You can now start the server by running \`make run\`.\n"
 
 run:
 	@printf "Starting the server...\n"
 	@cd product
 	@python3 product/flask_server.py
+
+run-here:
+	@printf "Starting the server...\n"
+	@python3 flask_server.py
 
 clean:
 	@printf "Removing the product/ folder if it exists..."
@@ -78,4 +84,33 @@ venv-run:
 venv-clean:
 	@printf "Removing the venv-product/ folder if it exists..."
 	@rm -rf venv-product
+	@printf " OK\n"
+
+docker-build: docker-clean
+	@printf "Copying the files to the docker-product/ folder..."
+	@test -d docker-product/static || mkdir docker-product/static
+	@test -d docker-product/static/styles || mkdir docker-product/static/styles
+	@test -d docker-product/templates || mkdir docker-product/templates
+	@cp AI/ai.py docker-product/ai.py
+	@cp GUI/templates/index.html docker-product/templates/index.html
+	@cp GUI/templates/answer.html docker-product/templates/answer.html
+	@cp GUI/static/styles/style-index.css docker-product/static/styles/style-index.css
+	@cp GUI/static/styles/style-answer.css docker-product/static/styles/style-answer.css
+	@cp server/flask_server.py docker-product/flask_server.py
+	@cp Makefile docker-product/Makefile
+	@printf " OK\n"
+	@printf "Building using docker (this might take a while)..."
+	@docker build -t w1bb/ia4:1.0 docker-product
+	@printf "\n\nEverything was setup successfully!\n"
+	@printf "You can now start the server by running \`make docker-run\`.\n"
+
+docker-clean:
+	@printf "Killing all docker containers..."
+	@docker kill $(shell docker ps -q)
+	@printf " OK\n"
+	@printf "Removing the docker-product/ folder content if it exists..."
+	@rm -rf docker-product/static
+	@rm -rf docker-product/templates
+	@rm -rf docker-product/*.py
+	@rm -rf docker-product/Makefile
 	@printf " OK\n"
