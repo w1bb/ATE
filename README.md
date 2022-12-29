@@ -18,11 +18,11 @@ Once the hard deadline passes, this project will be available under the **MIT
 license**. The code and its documentation were kindly contributed by:
 
 * Maria-Miruna ALDICA
-(<a href="https://github.com/miruna15aldica">@miruna15aldica</a>);
+(<a href="https://github.com/miruna15aldica">@miruna15aldica</a>) - The GUI module;
 * Matei-Ștefan IONESCU
-(<a href="https://github.com/Matei77">@Matei77</a>);
+(<a href="https://github.com/Matei77">@Matei77</a>) - The Server module;
 * Valentin-Ioan VINTILĂ
-(<a href="https://github.com/w1bb">@w1bb</a>).
+(<a href="https://github.com/w1bb">@w1bb</a>) - The AI module.
 
 ## Running the project
 
