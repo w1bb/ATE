@@ -106,7 +106,10 @@ docker-build: docker-clean
 
 docker-clean:
 	@printf "Killing all docker containers..."
-	@docker kill $(shell docker ps -q)
+	@containers=$(shell docker ps -q)
+	@if [ "$(shell echo "$(containers)" | wc -w)" -ne "0" ]; then \
+		docker kill $(containers); \
+	fi
 	@printf " OK\n"
 	@printf "Removing the docker-product/ folder content if it exists..."
 	@rm -rf docker-product/static
