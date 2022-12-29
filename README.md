@@ -56,6 +56,11 @@ In order to run this project, a few assumptions are made:
 
 To build and run the project, please follow these steps:
 
+1. From the parent (current) folder, run `make venv-build`. This will create a folder called `venv-product` that will contain all the files required by the server. The command will also install the required packages in the virtual environment.
+2. Run `make venv-run` in order to start the server. In a browser (e.g. Firefox), you can now go to `127.0.0.1:8080` and check the functionality of the application. Please note that the terminal in which you typed the command will now act as a logger. You should also make sure the `8080` port is not already in use.
+3. When you are done, you can exit the server by pressing `Ctrl+C`.
+4. *(Optional)* Once you are done testing the functionality, you can run a cleanup procedure by typing `make venv-clean`. Please make sure the server is not running in the background before running this command.
+
 
 ## Documentation
 
@@ -68,7 +73,7 @@ with its specific functionality:
 
 * `bs4`, required by the AI module - it helps scrape the Wikipedia articles;
 * `flask`, required by the Server module - it provides the functionality to instantiate the actual server;
-* `googlesearch-python`, required by the AI module - it searches Google for the best Wikipedia articles;
+* `google`, required by the AI module - it searches Google for the best Wikipedia articles;
 * `rich` - used throught the project to make text beautiful;
 * `tensorflow`, required by the AI module - it is used by the `transformers` package;
 * `transformers`, required by the AI module - it is the actual brain of the operation;

@@ -26,7 +26,6 @@ build: clean
 	pip install bs4
 	pip install flask
 	pip install google
-	pip install googlesearch-python
 	pip install rich
 	pip install tensorflow
 	pip install transformers
