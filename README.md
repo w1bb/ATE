@@ -1,21 +1,20 @@
 # IA4-Project
 
-This code is intended to store a client-server application that provides the
+This code is intended to store a server application that provides the
 user answers to trivia-like questions. It is part of a computer science
 assignment (2nd year, 1st semester).
 
 **(Self imposed) deadline**: 29 / 12 / 2022
 
-**Soft deadline**: ?
+**Hard deadline**: ?
 
 This project will be available
-<a href="https://github.com/w1bb/IA4-Project">on Github</a> once the soft deadline passes.
+<a href="https://github.com/w1bb/IA4-Project">on Github</a> once the hard deadline passes.
 
 ## License
 
-Once the soft deadline passes, this project will be available under the **MIT
-license**. The code and documentation present in this repository was kindly
-contributed by:
+Once the hard deadline passes, this project will be available under the **MIT
+license**. The code and its documentation were kindly contributed by:
 
 * Maria-Miruna ALDICA
 (<a href="https://github.com/miruna15aldica">@miruna15aldica</a>);
@@ -23,6 +22,30 @@ contributed by:
 (<a href="https://github.com/Matei77">@Matei77</a>);
 * Valentin-Ioan VINTILĂ
 (<a href="https://github.com/w1bb">@w1bb</a>).
+
+## Running the project
+
+There are two ways to run this project, and each comes with its advantages and disadvantages:
+
+* Running the project **locally** - this has the benefit of running out of the box as long as a few requirements are met (please read the dedicated subsection);
+* Running the project using **docker** - this will take longer, but will work on any machine.
+
+Pick your poison!
+
+### Running locally
+
+In order to run this project, a few assumptions are made:
+
+* The user is on a Linux OS (preferably Ubuntu or Arch);
+* The user has `make`, `python3` and `pip` installed, alongside a browser to check out the resulting server.
+
+To build and run the project, please follow the following steps:
+
+1. From the parent (current) folder, run `make build`. This will create a folder called `product` that will contain all the files required by the server.
+2. Run `make run` in order to start the server. In a browser (e.g. Firefox), you can now go to `127.0.0.1:8080` and check the functionality of the application. Please note that the terminal in which you typed the command will now act as a logger.
+3. When you are done, you can exit the server by pressing `Ctrl+C`.
+4. (Optional) You can also try `make debug`, which will run a development server instance instead.
+5. (Optional) Once you are done testing the functionality, you can run a cleanup procedure by typing `make clean`. Please make sure the server is not running in the background before running this command.
 
 ## Required packages
 
