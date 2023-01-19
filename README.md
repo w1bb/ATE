@@ -1,4 +1,4 @@
-# IA4-Project
+# Average Trivia Enjoyer (ATE)
 
 This code is intended to store a server application that provides the
 user answers to trivia-like questions. It is part of a computer science
@@ -9,7 +9,7 @@ assignment (2nd year, 1st semester).
 **Hard deadline**: 19 / 01 / 2023
 
 This project will be available
-<a href="https://github.com/w1bb/IA4-Project">on Github</a> once the hard
+<a href="https://github.com/w1bb/ATE">on Github</a> once the hard
 deadline passes.
 
 ## License
@@ -223,5 +223,5 @@ first loads the web page the server will render the _index.html_ page. After
 a question is asked and submitted the server will be notified that the _POST_
 method was used and will get the question from the form and try to find the
 best answer for it, which will be given by rendering the _answer.html_ page.
-The server is run using the `waitress` WSGI(Web Server Gateway Interface).
+The server is run using the `waitress` WSGI (Web Server Gateway Interface).
 The `serve` function starts the server and runs the application.
